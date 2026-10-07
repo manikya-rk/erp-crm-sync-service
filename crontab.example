@@ -1,0 +1,5 @@
+# ERP -> CRM customer sync
+# delta sync every 5 minutes
+*/5 * * * *  cd /opt/erp-crm-sync && /usr/bin/python3 -m sync.job >> logs/sync.log 2>&1
+# full reconciliation nightly at 01:30 - auto-creates anything missing in the CRM
+30 1 * * *   cd /opt/erp-crm-sync && /usr/bin/python3 -m sync.job --full >> logs/sync.log 2>&1
